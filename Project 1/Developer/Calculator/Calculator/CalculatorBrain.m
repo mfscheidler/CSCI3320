@@ -63,6 +63,8 @@
         double divisor = [self popOperand];
         
         if (divisor) result = [self popOperand] / divisor;
+        
+        // use NAN to output the illegal operation error for a divide-by-zero condition
         else result = NAN;
     }
     
@@ -89,6 +91,7 @@
         result = sqrt([self popOperand]);
     }
     
+    // PI functions as an operation
     else if ([@"pi" isEqualToString:operation])
     {
         result = M_PI;

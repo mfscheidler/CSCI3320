@@ -18,6 +18,7 @@
 
 @synthesize brain = _brain;
 
+// these globals help to determine calculator state changes
 bool digitIsLastButtonPressed = NO;
 bool radixAssigned = NO;
 bool signChange = NO;
@@ -32,7 +33,6 @@ bool isEnter = NO;
     
     return _brain;
 }
-
 
 - (IBAction)digitPressed:(UIButton *)sender
 {
@@ -51,26 +51,25 @@ bool isEnter = NO;
 
 - (IBAction)enterPressed
 {
-    //if(![self.display.text isEqual: @"0"])
-    {
-        [self.brain pushOperand:[self.display.text doubleValue]];
+    [self.brain pushOperand:[self.display.text doubleValue]];
     
-        // Include text in programDisplay
-        if ([self.programDisplay.text isEqualToString:@""] && isEnter)
-        {
-            self.programDisplay.text = @"0";
-        }
-        self.programDisplay.text = [self.programDisplay.text stringByAppendingString:
+    // Include text in programDisplay
+    if ([self.programDisplay.text isEqualToString:@""] && isEnter && !digitIsLastButtonPressed)
+    {
+        self.programDisplay.text = @"0";
+    }
+    self.programDisplay.text = [self.programDisplay.text stringByAppendingString:
                                 [NSString stringWithFormat:@" %@", self.display.text]];
     
-        self.userIsInTheMiddleOfEnteringANumber = NO;
-    }
+    self.userIsInTheMiddleOfEnteringANumber = NO;
+    
     radixAssigned = NO;
     digitIsLastButtonPressed = NO;
 }
 
 - (IBAction)operationPressed:(id)sender
 {
+    // this conditional statement helps to control sign change operation
     if ((self.userIsInTheMiddleOfEnteringANumber && ![[sender currentTitle] isEqualToString:@"+/-"]))
     {
         if (![[sender currentTitle] isEqualToString:@"Enter"])
@@ -107,11 +106,12 @@ bool isEnter = NO;
         
         else
         {
-            //NSLog(@"%@",isItZero);
+            // error output for negative squareroot and divid-by-zero
             if (isnan(result))
             {
                 self.display.text = [NSString stringWithFormat:@"error: illegal operation"];
             }
+            
             else
                 self.programDisplay.text = [self.programDisplay.text stringByAppendingString:
                                             [NSString stringWithFormat:@" %@ = %g", [sender currentTitle], result]];
@@ -120,21 +120,20 @@ bool isEnter = NO;
     
     else if(result != 0)
     {
+        // condition allows for further digit entry when the sign changes
         if([[sender currentTitle] isEqualToString:@"+/-"])
         {
             self.display.text = [NSString stringWithFormat:@" %g", result];
             digitIsLastButtonPressed = YES;
             self.userIsInTheMiddleOfEnteringANumber = YES;
         }
-    
+        
         else
         {
             self.programDisplay.text = [self.programDisplay.text stringByAppendingString:
                                         [NSString stringWithFormat:@" %g", result]];
         }
     }
-    
-    
     
     if (![[sender currentTitle] isEqualToString:@"+/-"])
     {
@@ -148,6 +147,7 @@ bool isEnter = NO;
     if([self.display.text isEqualToString:@"0"])
         self.userIsInTheMiddleOfEnteringANumber = YES;
     
+    // allow radix only when radixAssigned is set to false/NO
     if (radixAssigned == NO)
     {
         if(digitIsLastButtonPressed == YES)
@@ -181,6 +181,7 @@ bool isEnter = NO;
         self.display.text = [self.display.text substringToIndex:
                              self.display.text.length-(self.display.text.length>0)];
         
+        // detrmine whether radix is deleted
         if (![self.display.text containsString:@"."])
         {
             radixAssigned = NO;
