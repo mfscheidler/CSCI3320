@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>0381D418-ACA8-445A-AD0D-362DE1F0E5E2</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Calculator</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>F035E57594AD78B76F61540A7F9277650FAA6DE9</key>
+		<string>https://github.com/mfscheidler/CSCI3320.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>HW1/Developer/Calculator/Calculator.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>F035E57594AD78B76F61540A7F9277650FAA6DE9</key>
+		<string>../../../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/mfscheidler/CSCI3320.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>F035E57594AD78B76F61540A7F9277650FAA6DE9</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>F035E57594AD78B76F61540A7F9277650FAA6DE9</string>
+			<key>IDESourceControlWCCName</key>
+			<string>CSCI3320</string>
+		</dict>
+	</array>
+</dict>
+</plist>
