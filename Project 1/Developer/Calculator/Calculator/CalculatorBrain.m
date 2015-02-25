@@ -94,12 +94,6 @@
         result = M_PI;
     }
 
-    // control for super-tiny numbers . . .
-    if (result < 0.000001)
-    {
-        result = 0;
-    }
-
     [self pushOperand:result];
     
     return result;
